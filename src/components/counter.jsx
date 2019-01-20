@@ -2,26 +2,24 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"]
+    count: 0
   };
 
   render() {
     let classes = this.getBadgeClasses();
 
     return (
-      <React.Fragment>
+      <div style={{ disply: "block", padding: "5px" }}>
         <span style={{ minWidth: 60, lineHeight: 2 }} className={classes}>
           {this.formatCount()}
         </span>
-        <button
-          onClick={this.handleIncrement}
-          className="btn btn-secondary btn-sm"
-        >
+        <button onClick={this.handleIncrement} className="btn btn-secondary btn-sm">
           +
         </button>
-        <div>{this.listCondition()}</div>
-      </React.Fragment>
+        <button onClick={this.handleDecrement} className="btn btn-secondary btn-sm ml-1">
+          -
+        </button>
+      </div>
     );
   }
 
@@ -29,16 +27,9 @@ class Counter extends Component {
     this.setState({ count: this.state.count + 1 });
   };
 
-  listCondition() {
-    if (this.state.tags.length === 0) return "No tags";
-    return (
-      <ul>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
+  handleDecrement = () => {
+    if (this.state.count > 0) return this.setState({ count: this.state.count - 1 });
+  };
 
   getBadgeClasses() {
     let classes = "badge mr-2 ";
@@ -48,7 +39,7 @@ class Counter extends Component {
 
   formatCount() {
     let { count } = this.state;
-    return count === 0 ? "zero" : count;
+    return count === 0 ? "0" : count;
   }
 }
 
