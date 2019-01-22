@@ -10,6 +10,7 @@ class Counter extends Component {
 
     return (
       <div style={{ disply: "block", padding: "5px" }}>
+        {this.props.children}
         <span style={{ minWidth: 60, lineHeight: 2 }} className={classes}>
           {this.formatCount()}
         </span>
