@@ -20,6 +20,9 @@ class Counter extends Component {
         <button onClick={this.handleDecrement} className="btn btn-secondary btn-sm ml-1">
           -
         </button>
+        <button onClick={() => this.props.onDelete(this.props.id)} className="btn btn-danger btn-sm ml-1">
+          Delete
+        </button>
       </div>
     );
   }
